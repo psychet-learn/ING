@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a813e2ec-fc36-4f55-b6fc-72f85f5f7eae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/chanheepark.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/javascript/loader_her.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/style/loader_her.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ING.iml" afterPath="$PROJECT_DIR$/.idea/ING.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ingsite/urls.py" afterPath="$PROJECT_DIR$/ingsite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/javascript/image_input.js" afterPath="$PROJECT_DIR$/static/javascript/image_input.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/image/image_input.html" afterPath="$PROJECT_DIR$/templates/pages/image/image_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/index.html" afterPath="$PROJECT_DIR$/templates/pages/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +19,8 @@
       <file leaf-file-name="image_input.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/pages/image/image_input.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="217" column="9" lean-forward="true" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
+            <state relative-caret-position="2594">
+              <caret line="216" column="43" lean-forward="false" selection-start-line="216" selection-start-column="37" selection-end-line="216" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -691,8 +680,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/pages/image/image_input.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="217" column="9" lean-forward="true" selection-start-line="217" selection-start-column="9" selection-end-line="217" selection-end-column="9" />
+        <state relative-caret-position="2594">
+          <caret line="216" column="43" lean-forward="false" selection-start-line="216" selection-start-column="37" selection-end-line="216" selection-end-column="43" />
           <folding />
         </state>
       </provider>
