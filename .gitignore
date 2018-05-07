@@ -8,3 +8,4 @@ db.sqlite3
 __pycache__
 /media
 data_set
+git-lfs
