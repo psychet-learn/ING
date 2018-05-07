@@ -25,7 +25,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     re_path(r'^$', TemplateView.as_view(template_name="pages/index.html")),
-    re_path(r'^faces_extractor$', faces_extractor)
+    re_path(r'^faces_extractor$', faces_extractor),
+    # re_path(r'^$', faces_extractor)
+
 ]
 
 if settings.DEBUG:

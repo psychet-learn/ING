@@ -2,49 +2,239 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ING test page</title>
+    <title>별명 생성기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
-            border: solid 1px grey;
+        {#            border: 1px solid gray;#}
+        }
+
+        body {
+            background: linear-gradient(#F3CBC8, #93AAD0);
         }
 
         .page {
-            width: 980px;
+            max-width: 900px;
             margin: auto;
+            padding-top: 20px;
         }
 
-        .input_image {
+        .title {
+            font-size: 36px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 24px;
+            padding: 18px 0;
+            color: #555;
+        }
+
+        .input {
+            width: 100%;
             display: flex;
+            margin: 30px 0;
+            height: 350px;
         }
 
-        .input_image--left {
+        .img__wrapper {
             flex: 1;
+            height: 100%;
+            padding: 5px;
+
         }
 
-        .input_image--right {
+        .input .img {
+            background: #fff;
+            width: 90%;
+            margin: auto;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        .input .input-image.img:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        form {
+            width: 100%;
+            height: 100%;
+            align-content: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        form label,
+        form ul,
+        form li {
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+            font-size: 0;
+        }
+
+        form input {
+            width: calc(98% - 10px);
+            height: 93%;
+            z-index: 10;
+            cursor: pointer;
+            font-size: 0;
+            margin-left: 10px;
+
+        }
+
+        form input:active {
+            outline: none;
+        }
+
+        .extracted-face__wrapper {
             flex: 1;
+            height: 100%;
+            padding: 5px;
+            position: relative;
         }
 
+        .img .guide {
+            position: absolute;
+            top: calc(50% - 12px);
+            left: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #777;
+            text-align: center;
+            vertical-align: middle;
+            width: 100%;
+            z-index: 1;
+            cursor: default;
+        }
+
+        {#        .button {#}
+        {#            width: 160px;#}
+        {#            height: 45px;#}
+        {#            float: right;#}
+        {#            line-height: 45px;#}
+        {#            font-size: 18px;#}
+        {#            text-align: center;#}
+        {#            border-radius: 5px;#}
+        {#            background: #4285f4;#}
+        {#            color: #fff;#}
+        {#            font-weight: 500;#}
+        {#            margin-top: 20px;#}
+        {#            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);#}
+        {#            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);#}
+        {#            cursor: pointer;#}
+        {#        }#}
+
+        {#        .button:hover {#}
+        {#            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);#}
+        {#            background: #3275e4;#}
+        {#        }#}
+        {##}
+        {#        .button:active {#}
+        {#            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);#}
+        {#            background: #5295ff;#}
+        {#        }#}
+
+        @media ( max-width: 710px ) {
+            .page {
+                width: 95%;
+                margin: auto;
+            }
+
+            .input {
+                display: inline-block;
+                margin: 10px 0;
+                height: 600px;
+            }
+
+            .img__wrapper {
+                height: 300px;
+                padding: 5px;
+            }
+
+            .input .img {
+                width: 100%;
+                height: 100%;
+
+            }
+
+            .extracted-face__wrapper {
+                margin-top: 4%;
+            }
+        }
 
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style/loader_her.css">
+
 </head>
 <body>
-    <div class="page">
-        <div class="input_image">
-            <div class="input_src--top">
+<div class="page">
+
+    <div class="title">별명 생성기</div>
+    <div class="description">인공지능 별명 생성기가 얼굴을 보고 별명을 만듭니다. 우선 사진을 올리고, 추출된 얼굴을 확인하세요.</div>
+    <div class="input">
+        <div class="input-image__wrapper img__wrapper">
+            <div class="input-image img">
                 <form id="upload_input_image" action="" method="post" enctype="multipart/form-data">
+                    <div class="guide" id="guide">여기에 사진을 올려주세요.</div>
                     {% csrf_token %}
                     {{ form }}
-                    <input type="submit" value="Upload" />
                 </form>
             </div>
-            <div id="input_image" class="preview--bottom">
-                <img id="preview_input_image" src="#" alt="your image"/>
+        </div>
+        <div class="extracted-face__wrapper img__wrapper">
+            <div class="extracted-face img">
+                <div class="guide" id="extracted-face__guide">추출된 얼굴을 확인해 주세요.
+                    <div class="iu-import import">
+                        {% include '../../compositions/image/image_component.html' %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/static/javascript/image_input.js"></script>
+    <div class="maker">
+        <div id="wrap"></div>
+        <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+        <p class="info">별명을 생성할수 있도록 이곳을 꾹 눌러주세요.</p>
+    </div>
+    {#    <div class="button">별명 생성하기 <i class="fas fa-flask"></i></div>#}
+</div>
+{#<script type="text/javascript" src="/static/javascript/image_input.js"></script>#}
+<script>
+    var $guide = $('#guide');
+    $(document).ready(function () {
+        $('#id_image').on('change', function () {
+            preview_img(this);
+            var file = this.files[0];
+            var form_data = new FormData();
+            form_data.append('file', file);
+
+            $('#upload_input_image').submit();
+        });
+    });
+
+    function preview_img(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $guide.html("<img id='user_img' src='" + e.target.result + "', alt='your image'>");
+                $guide.css({
+                    'top': '60px',
+                    'width': '100%'
+                });
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.min.js"></script>
+<script type="text/javascript" src="/static/javascript/loader_her.js"></script>
 </body>
 </html>
