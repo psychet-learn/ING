@@ -149,8 +149,8 @@ function render() {
         animatestep = maxstep;
         // toDo : 여기서 사용자가 사진 올렸는지, 올린 사진으로부터 추출한 얼굴이 있는지 확인하고, 다른 페이지를 로드한다.
         if (true) {
-            $(location).attr('href', 'http://127.0.0.1:8000/your_nickname')
-
+            // $(location).attr('href', 'http://127.0.0.1:8000/your_nickname')
+            $('#upload_input_image').submit();
         }
     }
 }

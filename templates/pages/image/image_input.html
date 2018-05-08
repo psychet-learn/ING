@@ -190,9 +190,23 @@
         <div class="extracted-face__wrapper img__wrapper">
             <div class="extracted-face img">
                 <div class="guide" id="extracted-face__guide">추출된 얼굴을 확인해 주세요.
+                <!--
                     <div class="iu-import import">
                         {% include '../../compositions/image/image_component.html' %}
+                        <img class="extracted_img" src="{% if extracted_img_list.image.url %}{{ extracted_img_list.image.url }}{% endif %}">
+                        <p> {{ nickname_list }} </p>
                     </div>
+                -->
+                    {% for extracted_img in extracted_img_list %}
+                        <div class="iu-import import">
+                            {% include '../../compositions/image/image_component.html' %}
+                        </div>
+                    {% endfor %}
+                    {% for nickname_img in nickname_list %}
+                        <div class="iu-import import">
+                            <p>{{ nickname_img.nickname }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -214,7 +228,7 @@
             var form_data = new FormData();
             form_data.append('file', file);
 
-            $('#upload_input_image').submit();
+            // $('#upload_input_image').submit();
         });
     });
 

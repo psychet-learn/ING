@@ -1,4 +1,5 @@
-﻿from django.shortcuts import render
+﻿from django.http import JsonResponse
+from django.shortcuts import render
 
 from .forms import ImageForm
 from .utils import handle_image_file
@@ -10,8 +11,12 @@ def faces_extractor(request):
     if request.method == 'POST':
         if form.is_valid():
             extracted_img_list, nickname_list = handle_image_file(image=request.FILES['image'])
-            return render(request, "pages/image/image_output.html",
+            # return render(request, "pages/image/image_input.html",
+            #               {'extracted_img_list': extracted_img_list,
+            #                'nickname_list': nickname_list})
+            return render(request, "pages/image/image_input.html",
                           {'extracted_img_list': extracted_img_list,
-                           'nickname_list': nickname_list})
+                           'nickname_list': nickname_list,
+                           'form': form})
 
     return render(request, "pages/image/image_input.html", {'form': form})

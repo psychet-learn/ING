@@ -81,15 +81,16 @@ def handle_image_file(image):
     raw_img = Image.create_image(image_file=image)
     extracted_img_path_list = extract(raw_img.image.path)
 
-    extracted_img_list = []
+    extracted_img_id_list = []
     if extracted_img_path_list:
         for extracted_img_path in extracted_img_path_list:
             extracted_img = ExtractedImage()
             extracted_img.image.name = extracted_img_path
             extracted_img.origin_image = raw_img
             extracted_img.save()
-            extracted_img_list.append(extracted_img)
+            extracted_img_id_list.append(extracted_img.id)
 
+    extracted_img_list = ExtractedImage.objects.filter(id__in=extracted_img_id_list)
     nickname_list = ing_models(extracted_img_list)
 
     return extracted_img_list, nickname_list

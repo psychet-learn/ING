@@ -53,11 +53,14 @@ def ing_models(extracted_img_list):
             category = Category.objects.get(id=(int(predict)))
             category_list.append(category)
 
-    nickname_list = []
+    nickname_id_list = []
     if category_list:
         for category in category_list:
             nickname_queryset = Nickname.objects.filter(category=category)
-            nickname = nickname_list[random.randrange(0, len(nickname_queryset)+1)]
-            nickname_list.append(nickname)
+            if nickname_queryset:
+                nickname_id = nickname_queryset[random.randrange(0, len(nickname_queryset))].id
+                nickname_id_list.append(nickname_id)
+
+    nickname_list = Nickname.objects.filter(id__in=nickname_id_list)
 
     return nickname_list
