@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ING test page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            border: solid 1px grey;
+        }
+
+        .page {
+            width: 980px;
+            margin: auto;
+        }
+
+        .input_image {
+            display: flex;
+        }
+
+        .input_image--left {
+            flex: 1;
+        }
+
+        .input_image--right {
+            flex: 1;
+        }
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="input_image">
+            <div class="input_src--top">
+                <form id="upload_input_image" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Upload"/>
+                </form>
+            </div>
+            <div id="input_image" class="preview--bottom">
+                <img id="preview_input_image" src="#" alt="your image"/>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/javascript/image_input.js"></script>
+</body>
+</html>

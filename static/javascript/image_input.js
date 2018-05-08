@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
     $('#id_image').on('change', function () {
         var file = this.files[0];
         var form_data = new FormData();
