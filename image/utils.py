@@ -5,23 +5,7 @@ from object_extractor import Extractor, FRONTALFACE_ALT2
 import cv2
 
 from .models import Image, ExtractedImage
-
-
-def handle_image_file(image):
-    raw_img = Image.create_image(image_file=image)
-    extracted_img_path_list = extract(raw_img.image.path)
-    extracted_img_count = len(extracted_img_path_list)
-
-    extracted_img_list = []
-    if extracted_img_path_list:
-        for extracted_img_path in extracted_img_path_list:
-            extracted_img = ExtractedImage()
-            extracted_img.image.name = extracted_img_path
-            extracted_img.origin_image = raw_img
-            extracted_img.save()
-            extracted_img_list.append(extracted_img)
-
-    return extracted_img_count, extracted_img_list
+from nickname.utils import ing_models
 
 
 def extracted_image_path(image_path, count):
@@ -91,3 +75,22 @@ def detect(image,
                                        scaleFactor=scale_factor,
                                        minNeighbors=min_neighbors,
                                        minSize=min_size)
+
+
+def handle_image_file(image):
+    raw_img = Image.create_image(image_file=image)
+    extracted_img_path_list = extract(raw_img.image.path)
+
+    extracted_img_list = []
+    if extracted_img_path_list:
+        for extracted_img_path in extracted_img_path_list:
+            extracted_img = ExtractedImage()
+            extracted_img.image.name = extracted_img_path
+            extracted_img.origin_image = raw_img
+            extracted_img.save()
+            extracted_img_list.append(extracted_img)
+
+    nickname_list = ing_models(extracted_img_list)
+
+    return extracted_img_list, nickname_list
+

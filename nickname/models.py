@@ -10,8 +10,9 @@ class TimeStampedModel(models.Model):
 
 
 class Category(TimeStampedModel):
+    id = models.IntegerField(primary_key=True)
     category = models.CharField(max_length=200)
-    info = models.CharField(max_length=200, default="")
+    info = models.CharField(max_length=200, default="", null=True)
 
     def __str__(self):
         return self.category
@@ -20,7 +21,7 @@ class Category(TimeStampedModel):
 class Nickname(TimeStampedModel):
     nickname = models.CharField(max_length=200)
     category = models.ForeignKey(Category, default=None, on_delete=models.SET_NULL, null=True)
-    info = models.CharField(max_length=200, default="")
+    info = models.CharField(max_length=200, default="", null=True)
 
     def __str__(self):
         return self.nickname
