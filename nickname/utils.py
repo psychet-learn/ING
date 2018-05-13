@@ -14,7 +14,7 @@ from .models import Category, Nickname
 def ing_models(extracted_img_list):
     # VARIABLES
     # CKPT_PATH = "cosmetic-300/cosmetic-300"
-    CKPT_PATH = os.path.join(settings.BASE_DIR + 'cosmetic-300/cosmetic-300')
+    CKPT_PATH = os.path.join(settings.BASE_DIR, 'cosmetic-300/cosmetic-300')
     MEAN_PIXEL = [123.68, 116.78, 103.94]
     NCLASS = 12
 
