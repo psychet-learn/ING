@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
@@ -10,7 +13,8 @@ from .models import Category, Nickname
 
 def ing_models(extracted_img_list):
     # VARIABLES
-    CKPT_PATH = "cosmetic-300/cosmetic-300"
+    # CKPT_PATH = "cosmetic-300/cosmetic-300"
+    CKPT_PATH = os.path.join(settings.BASE_DIR + 'cosmetic-300/cosmetic-300')
     MEAN_PIXEL = [123.68, 116.78, 103.94]
     NCLASS = 12
 
@@ -38,11 +42,9 @@ def ing_models(extracted_img_list):
             x = x.resize((224, 224))
             x = np.array(x)
             x = x.astype(np.float32) - MEAN_PIXEL
-
             predict_images = []
             predict_images.append(x)
             predict_images = np.array(predict_images)
-
             predict = sess.run(model["predictions"], feed_dict={inputs: predict_images, is_training: False})
             predict = np.argmax(predict, 1)
             predict_list.append(predict)
