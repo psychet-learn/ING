@@ -64,5 +64,9 @@ def ing_models(extracted_img_list):
                 nickname_id_list.append(nickname_id)
 
     nickname_list = Nickname.objects.filter(id__in=nickname_id_list)
+    if nickname_list:
+        for extracted_img, assigned_nickname in zip(extracted_img_list, nickname_list):
+            extracted_img.nickname = assigned_nickname
+            extracted_img.save()
 
     return nickname_list
